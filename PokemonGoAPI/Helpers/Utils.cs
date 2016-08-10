@@ -44,5 +44,15 @@ namespace PokemonGo.RocketAPI.Helpers
             var xxh64 = new xxHash(64, seed);
             return BitConverter.ToUInt64(xxh64.ComputeHash(request), 0);
         }
+
+
+        public static Vector NormalizeVector(double x, double y, double z, double normalValue)
+        {
+            double length = Math.Sqrt((x * x) + (y * y) + (z * z)) / normalValue;
+            return new Vector(Math.Abs(x / length), Math.Abs(y / length), Math.Abs(z / length));
+
+        }
+
+
     }
 }
